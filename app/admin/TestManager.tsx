@@ -285,38 +285,50 @@ export default function TestManager({ onLogout }: { onLogout: () => void }) {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-                  <select
-                    value={attemptTestId}
-                    onChange={e => setAttemptTestId(e.target.value)}
-                    className="w-full bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream focus:outline-none focus:border-accent"
-                  >
-                    <option value="">All Tests</option>
-                    {tests.map(t => (
-                      <option key={t.id} value={t.id}>{t.title}</option>
-                    ))}
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4 min-w-0">
+                  <div className="min-w-0">
+                    <label className="block text-[11px] font-mono uppercase tracking-widest text-muted mb-1.5">Test</label>
+                    <select
+                      value={attemptTestId}
+                      onChange={e => setAttemptTestId(e.target.value)}
+                      className="w-full min-w-0 bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream focus:outline-none focus:border-accent"
+                    >
+                      <option value="">All Tests</option>
+                      {tests.map(t => (
+                        <option key={t.id} value={t.id}>{t.title}</option>
+                      ))}
+                    </select>
+                  </div>
 
-                  <input
-                    value={attemptUserName}
-                    onChange={e => setAttemptUserName(e.target.value)}
-                    placeholder="Filter by user"
-                    className="w-full bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream placeholder:text-muted focus:outline-none focus:border-accent"
-                  />
+                  <div className="min-w-0">
+                    <label className="block text-[11px] font-mono uppercase tracking-widest text-muted mb-1.5">User</label>
+                    <input
+                      value={attemptUserName}
+                      onChange={e => setAttemptUserName(e.target.value)}
+                      placeholder="Filter by user"
+                      className="w-full min-w-0 bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream placeholder:text-muted focus:outline-none focus:border-accent"
+                    />
+                  </div>
 
-                  <input
-                    type="date"
-                    value={attemptFrom}
-                    onChange={e => setAttemptFrom(e.target.value)}
-                    className="w-full bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream focus:outline-none focus:border-accent"
-                  />
+                  <div className="min-w-0">
+                    <label className="block text-[11px] font-mono uppercase tracking-widest text-muted mb-1.5">From</label>
+                    <input
+                      type="date"
+                      value={attemptFrom}
+                      onChange={e => setAttemptFrom(e.target.value)}
+                      className="w-full min-w-0 max-w-full appearance-none bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream focus:outline-none focus:border-accent"
+                    />
+                  </div>
 
-                  <input
-                    type="date"
-                    value={attemptTo}
-                    onChange={e => setAttemptTo(e.target.value)}
-                    className="w-full bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream focus:outline-none focus:border-accent"
-                  />
+                  <div className="min-w-0">
+                    <label className="block text-[11px] font-mono uppercase tracking-widest text-muted mb-1.5">To</label>
+                    <input
+                      type="date"
+                      value={attemptTo}
+                      onChange={e => setAttemptTo(e.target.value)}
+                      className="w-full min-w-0 max-w-full appearance-none bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream focus:outline-none focus:border-accent"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-2 mb-4">
