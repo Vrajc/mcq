@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model TestSet {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String     @default("")
+  slug        String     @unique
+  timeLimit   Int        @default(15)
+  published   Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  questions   Question[]
+  attempts    Attempt[]
+}
+
+model Question {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  testSetId   String   @db.ObjectId
+  testSet     TestSet  @relation(fields: [testSetId], references: [id], onDelete: Cascade)
+  questionText String
+  optionA     String
+  optionB     String
+  optionC     String
+  optionD     String
+  answer      String
+  order       Int     @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Attempt {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  testSetId     String   @db.ObjectId
+  testSet       TestSet  @relation(fields: [testSetId], references: [id], onDelete: Cascade)
+  userName      String
+  score         Int
+  total         Int
+  percentage    Int
+  attemptNumber Int
+  createdAt     DateTime @default(now())
+
+  @@index([testSetId, createdAt])
+  @@index([userName, createdAt])
+}
