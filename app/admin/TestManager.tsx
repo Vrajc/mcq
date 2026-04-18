@@ -302,12 +302,15 @@ export default function TestManager({ onLogout }: { onLogout: () => void }) {
 
                   <div className="min-w-0">
                     <label className="block text-[11px] font-mono uppercase tracking-widest text-muted mb-1.5">User</label>
-                    <input
+                    <select
                       value={attemptUserName}
                       onChange={e => setAttemptUserName(e.target.value)}
-                      placeholder="Filter by user"
-                      className="w-full min-w-0 bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream placeholder:text-muted focus:outline-none focus:border-accent"
-                    />
+                      className="w-full min-w-0 bg-ink border border-border rounded-lg px-3 py-2 text-sm text-cream focus:outline-none focus:border-accent"
+                    >
+                      <option value="">All Users</option>
+                      <option value="Neeja">Neeja</option>
+                      <option value="Vraj">Vraj</option>
+                    </select>
                   </div>
 
                   <div className="min-w-0">
